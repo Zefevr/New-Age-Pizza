@@ -1,119 +1,75 @@
-import React from 'react';
+import React, {PureComponent} from 'react'
+import {connect} from 'react-redux'
 import { toppings } from '../lib/PizzaData'
-import { connect } from 'react-redux'
-import { addToppings } from '../actions/toppings'
+import {addToppings, deleteToppings} from '../actions/toppings'
+import store from '../store'
 
-class Toppings extends React.Component{
+
+class Toppings extends PureComponent{
   constructor(props) {
     super(props);
-    this.state = { toppings: '' };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState ({ toppings: event.target.value });
+    this.state = {value: ''}
     
-  }
-
-  isDisabled = id => {
-    return (
-      this.state.toppings.length > 2 && this.state.toppings.indexOf(id) === -1
-    );
-  };
+    this.handleChange = this.handleChange.bind(this);
   
+  }
+  handleChange = (event) => {
+    if (event.target.checked) {
+      store.dispatch(addToppings(event.target.value))
+    } else {
+      store.dispatch(deleteToppings(event.target.value));
+    }
+  }
+            
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+            
+    
   render() {
     return (
-      <div>
-        <h2>Choose your Toppings:</h2>
-        <form >
-          <legend>Toppings (Max 3 € 0,50 each)</legend>
-          <br />
-          <input type="checkbox" value="Pineapple" disabled={this.isDisabled("Pineapple")} onChange={this.handleChange} />
-          <label for="Pineapple">Pineapple</label>
-          <input type="checkbox" value="Corn" disabled={this.isDisabled("Pineapple")} onChange={this.handleChange} />
-          <label for="Corn">Corn</label>
-          <br />
-          <input type="checkbox" value="Green Olives" disabled={this.isDisabled("Pineapple")} onChange={this.handleChange} />
-          <label for="Green Olives">Green Olives</label>
-          <input type="checkbox" value="Red Onion" disabled={this.isDisabled("Pineapple")} onChange={this.handleChange} />
-          <label for="Red Onion">Red Onion</label>
-          <br />
-          <input type="checkbox" value="Spinach" disabled={this.isDisabled("Pineapple")} onChange={this.handleChange} />
-          <label for="Spinach">Spinach</label>
-          <input type="checkbox" value="Cherry Tomatoes" disabled={this.isDisabled("Pineapple")} onChange={this.handleChange} />
-          <label for="Cherry Tomatoes">Cherry Tomatoes</label>
-          <input type="checkbox" value="Chicken" disabled={this.isDisabled("Pineapple")} onChange={this.handleChange} />
-          <label for="Chicken">Chicken</label>
-        </form>
-      </div>
-      
-    );
+
+      <form 
+        value={this.state.value}
+        onSubmit={this.handleSubmit}
+        onChange={this.handleChange}>
+        <h2>Choose your Toppings (Max 3); 0.5 € each:</h2>
+    
+        <input type="checkbox" value={toppings[0].name}/>
+        <label>{toppings[0].name}</label>
+        
+        <input type="checkbox" value={toppings[1].name}/>
+        <label>{toppings[1].name}</label>
+        
+        <input type="checkbox" value={toppings[2].name}/>
+        <label>{toppings[2].name}</label>
+
+        <input type="checkbox" value={toppings[3].name}/>
+        <label>{toppings[3].name}</label>
+        
+        <input type="checkbox" value={toppings[4].name }/>
+        <label>{toppings[4].name}</label>
+
+        <input type="checkbox"value={toppings[5].name}/>
+        <label>{toppings[5].name}</label>
+
+        <input type="checkbox" value={toppings[6].name}/>
+        <label>{toppings[6].name}</label>
+          
+      </form>
+    )
   }
 }
 
 
-export default connect(null, { addToppings })(Toppings)
-
-
-
-
-
-
-
-/* import React from "react";
-import ReactDOM from "react-dom";
-import { Checkbox, Row, Col } from "antd";
-
-class CheckBoxed extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: []
-    };
+const mapStateToProps = function (state, props) {
+  return {
+    toppings: state.toppings,
+  
   }
-  onChange = checkedValues => {
-    this.setState(() => {
-      return { checked: checkedValues };
-    });
-  };
+}
 
-  isDisabled = id => {
-    return (
-      this.state.checked.length > 1 && this.state.checked.indexOf(id) === -1
-    );
-  };
-  render() {
-    return (
-      <Checkbox.Group style={{ width: "100%" }} onChange={this.onChange}>
-        <Row>
-          <Col span={8}>
-            <Checkbox value="A" disabled={this.isDisabled("A")}>
-              A
-            </Checkbox>
-          </Col>
-          <Col span={8}>
-            <Checkbox value="B" disabled={this.isDisabled("B")}>
-              B
-            </Checkbox>
-          </Col>
-          <Col span={8}>
-            <Checkbox value="C" disabled={this.isDisabled("C")}>
-              C
-            </Checkbox>
-          </Col>
-          <Col span={8}>
-            <Checkbox value="D" disabled={this.isDisabled("D")}>
-              D
-            </Checkbox>
-          </Col>
-          <Col span={8}>
-            <Checkbox value="E" disabled={this.isDisabled("E")}>
-              E
-            </Checkbox>
-          </Col>
-        </Row>
-      </Checkbox.Group>
-    );
-  }
-} */
+export default connect(mapStateToProps, {addToppings, deleteToppings})(Toppings)
+
+
+

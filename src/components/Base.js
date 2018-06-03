@@ -24,7 +24,8 @@ class Base extends React.Component{
           base.map((base) => {
             return <p key={base.id}>
               <label>{base.name} &euro; {base.price}
-                <input type="radio" name="base" onChange={_ => this.props.addBase(base)}/></label>
+                <input type="radio" name="base" onChange={_ => this.props.addBase(base)}/>
+              </label>
             </p>
           })
         }

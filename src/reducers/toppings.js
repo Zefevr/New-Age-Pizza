@@ -1,9 +1,17 @@
 import { ADD_TOPPINGS } from '../actions/toppings'
+import { DELETE_TOPPINGS} from '../actions/toppings'
 
-export default (state = null, {type, payload}) => {
-  switch (type) {
+export default function (state = [], action = {}) {
+  switch (action.type) {
   case ADD_TOPPINGS:
-    return payload
+    if (state.length < 3) {
+      return state.concat(action.payload)
+    } else {
+      return state
+    }
+
+  case DELETE_TOPPINGS:
+    return state.filter(toppings => toppings !== action.payload)
   default:
     return state
   }
