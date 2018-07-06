@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react'
 import { connect } from 'react-redux'
 
-class Total extends PureComponent {
-        
+class Total extends PureComponent {   
+
+
 
   render() {
 
