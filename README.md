@@ -1,8 +1,8 @@
 ![react icon](https://github.com/Zefevr/New-Age-Pizza/blob/master/public/dev-icons/react.svg) 
-![redux icon](https://github.com/Zefevr/New-Age-Pizza/master/public/dev-icons/redux.svg) 
-![js icon](https://github.com/Zefevr/New-Age-Pizza/master/public/dev-icons/js.svg) 
-![html icon](https://github.com/Zefevr/New-Age-Pizza/master/public/dev-icons/html.svg) 
-![css icon](https://github.com/Zefevr/New-Age-Pizza/master/public/dev-icons/css.svg)
+![redux icon](https://github.com/Zefevr/New-Age-Pizza/blob/master/public/dev-icons/redux.svg) 
+![js icon](https://github.com/Zefevr/New-Age-Pizza/blob/master/public/dev-icons/js.svg) 
+![html icon](https://github.com/Zefevr/New-Age-Pizza/blob/master/public/dev-icons/html.svg) 
+![css icon](https://github.com/Zefevr/New-Age-Pizza/blob/master/public/dev-icons/css.svg)
 # Pizza Configurator
 > Assignment made for Codaisseur
 
